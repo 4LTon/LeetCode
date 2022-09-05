@@ -1,0 +1,27 @@
+class Solution {
+    public String reverseWords(String s) {
+        
+        int lastSpaceIndex = -1;
+        char[] chArray = s.toCharArray();
+        int len = s.length();
+        
+        for (int strIndex = 0; strIndex <= len; strIndex++) {
+            if (strIndex == len || chArray[strIndex] == ' ') {
+                int left = lastSpaceIndex + 1;
+                int right = strIndex - 1;
+                
+                while (left < right) {
+                    char temp = chArray[left];
+                    chArray[left] = chArray[right];
+                    chArray[right] = temp;
+                    left++;
+                    right--;
+                }
+                
+                lastSpaceIndex = strIndex;
+            }
+        }
+        
+        return new String(chArray);
+    }
+}
